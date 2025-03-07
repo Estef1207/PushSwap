@@ -11,18 +11,3 @@
 /* ************************************************************************** */
 
 #include "header.h"
-
-void sa(t_stack *a)
-{
-	int	temp;
-
-	if (a->size < 2)
-		return ;
-	temp = a->top->value;
-	a->top->value = a->top->next->value;
-	a->top->next->value = temp;
-
-	
-}
-
-
