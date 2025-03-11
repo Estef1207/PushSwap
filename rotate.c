@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-void ra(t_stack *a)
+void	ra(t_stack *a)
 {
 	int	tmp;
 	int	i;
 
 	if (a->size <= 1)
-	return ;
+		return ;
 	tmp = a->array[a->size - 1];
 	a->value[a->size] = a->value[a->size];
 	i = a->size - 1;
@@ -27,17 +27,17 @@ void ra(t_stack *a)
 		a->array[i] = a->array[i - 1];
 		i--;
 	}
-	a->array[0] = tmp;	
+	a->array[0] = tmp;
 	write(1, "ra\n", 3);
 }
 
-void rb(t_stack *b)
+void	rb(t_stack *b)
 {
 	int	tmp;
 	int	i;
 
 	if (b->size <= 1)
-	return ;
+		return ;
 	tmp = b->array[b->size - 1];
 	b->value[b->size] = b->value[b->size];
 	i = b->size - 1;
@@ -46,20 +46,19 @@ void rb(t_stack *b)
 		b->array[i] = b->array[i - 1];
 		i--;
 	}
-	b->array[0] = tmp;	
+	b->array[0] = tmp;
 	write(1, "rb\n", 3);
 }
-
-void rr(t_stack *a, t_stack *b)
+/*
+void	rr(t_stack *a, t_stack *b)
 {
-	int tmp_a;
+	int	tmp_a;
 	int	tmp_b;
 	int	i;
 
-	if(a->size <= 1 || b->size <= 1)
+	if (a->size <= 1 || b->size <= 1)
 		return ;
 	tmp_a = a->array[a->size - 1];
-	a->value[a->size] = a->value[a->size];
 	i = a->size - 1;
 	while (i > 0)
 	{
@@ -68,13 +67,33 @@ void rr(t_stack *a, t_stack *b)
 	}
 	a->array[0] = tmp_a;
 	tmp_b = b->array[b->size - 1];
-	b->value[b->size] = b->value[b->size];
 	i = b->size - 1;
 	while (i > 0)
 	{
 		b->array[i] = b->array[i - 1];
 		i--;
 	}
-	b->array[0] = tmp_b;	
+	b->array[0] = tmp_b;
 	write(1, "rr\n", 3);
+}*/
+void	rr(t_stack *a, t_stack *b)
+{
+	int	tmp;
+	int i;
+	int	rotated;
+
+	rotated = 0;
+	if (a->size > 1)
+	{
+		tmp = a->array[a->size - 1]; i = a->size - 1;
+		while (i > 0) { a->array[i] = a->array[i - 1]; i--; }
+		a->array[0] = tmp; rotated = 1;
+	}
+	if (b->size > 1)
+	{
+		tmp = b->array[b->size - 1]; i = b->size - 1;
+		while (i > 0) { b->array[i] = b->array[i - 1]; i--; }
+		b->array[0] = tmp; rotated = 1;
+	}
+	if (rotated) write(1, "rr\n", 3);
 }

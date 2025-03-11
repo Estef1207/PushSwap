@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void sa(t_stack *a)
+void	sa(t_stack *a)
 {
 	int	temp;
 
@@ -24,7 +24,7 @@ void sa(t_stack *a)
 	write(1, "sa\n", 3);
 }
 
-void sb(t_stack *b)
+void	sb(t_stack *b)
 {
 	int	temp;
 
@@ -36,23 +36,23 @@ void sb(t_stack *b)
 	wwrite(1, "sb\n", 3);
 }
 
-void ss(t_stack *a, t_stack *b)
+void	ss(t_stack *a, t_stack *b)
 {
-    int tmp_a;
-    int tmp_b;
-    
-    if (a->size >= 2)
-    {
-        tmp_a = a->top->value;
-        a->top->value = a->top->next->value;
-        a->top->next->value = tmp_a;
-    }
-    if (b->size >= 2)
-    {
-        tmp_b = b->top->value;
-        b->top->value = b->top->next->value;
-        b->top->next->value = tmp_b;
-    }
-    if (a->size >= 2 || b->size >= 2)
-        write(1, "ss\n", 3);
+	int	tmp_a;
+	int	tmp_b;
+
+	if (a->size >= 2)
+	{
+		tmp_a = a->top->value;
+		a->top->value = a->top->next->value;
+		a->top->next->value = tmp_a;
+	}
+	if (b->size >= 2)
+	{
+		tmp_b = b->top->value;
+		b->top->value = b->top->next->value;
+		b->top->next->value = tmp_b;
+	}
+	if (a->size >= 2 || b->size >= 2)
+		write(1, "ss\n", 3);
 }
