@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* stack_init.c */
 #include "push_swap.h"
 
 void	initialize_stack(t_stack *stack)

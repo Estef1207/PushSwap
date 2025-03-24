@@ -14,26 +14,30 @@
 
 void	pa(t_stack *a, t_stack *b)
 {
-	int	value;
+	t_node *temp;
 
-	if (b->size <= 0)
+	if (b->size <= 0 || b->top == NULL)
 		return ;
-	value = b->array[b->size - 1];
+	temp = b->top;
+	b->top = b->top->next;
+	temp->next = a->top;
+	a->top = temp;
 	b->size--;
-	a->array[a->size] = value;
 	a->size++;
 	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
 {
-	int	value;
+	t_node *temp;
 
-	if (a->size <= 0)
+	if (a->size <= 0 || a->top == NULL)
 		return ;
-	value = a->array[a->size - 1];
+	temp = a->top;
+	a->top = a->top->next;
+	temp->next = b->top;
+	b->top = temp;
 	a->size--;
-	b->array[b->size] = value;
 	b->size++;
 	write(1, "pb\n", 3);
 }

@@ -33,7 +33,7 @@ void	sb(t_stack *b)
 	temp = b->top->value;
 	b->top->value = b->top->next->value;
 	b->top->next->value = temp;
-	wwrite(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)
