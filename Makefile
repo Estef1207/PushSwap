@@ -12,7 +12,7 @@
 
 NAME = pushswap
 
-SRC = push_swap.c utils.c
+SRC = push_swap.c swap.c push.c rotate.c reverse.c stack_init.c main.c
 
 OBJS = $(SRC:.c=.o)
 
