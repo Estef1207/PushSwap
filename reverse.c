@@ -14,10 +14,14 @@
 
 void	rra(t_stack *a)
 {
-	t_node	*tmp;
+	t_node *first;
+	t_node *last;
 
-	tmp = a;
-	while (a != NULL || tmp->next != NULL)
+	if (a->size <= 1 || a->top == NULL)
+		return ;
+	first = a->top;
+	last = a->top;
+	while (a->	)
 	{
 		tmp = tmp->next;
 		a->value = tmp->value;
