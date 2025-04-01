@@ -14,8 +14,8 @@
 
 void	ra(t_stack *a)
 {
-	t_node *first;
-	t_node *last;
+	t_node	*first;
+	t_node	*last;
 
 	if (a->size <= 1 || a->top == NULL)
 		return ;
@@ -48,14 +48,15 @@ void	rb(t_stack *b)
 
 void	rr(t_stack *a, t_stack *b)
 {
-	int		rotated = 0;
+	int		rotated;
 	t_node	*first;
 	t_node	*last;
 
+	rotated = 0;
 	if (a->size > 1)
 	{
-		t_node *first = a->top;
-		t_node *last = a->top;
+		first = a->top;
+		last = a->top;
 		a->top = a->top->next;
 		while (last->next != NULL)
 			last = last->next;
@@ -65,9 +66,9 @@ void	rr(t_stack *a, t_stack *b)
 	}
 	if (b->size > 1)
 	{
-		t_node *first = b->top;
-		t_node *last = b->top;
-        b->top = b->top->next;
+		first = b->top;
+		last = b->top;
+		b->top = b->top->next;
 		while (last->next != NULL)
 			last = last->next;
 		last->next = first;
