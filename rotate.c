@@ -64,17 +64,25 @@ void	rr(t_stack *a, t_stack *b)
 		first->next = NULL;
 		rotated = 1;
 	}
-	if (b->size > 1)
-	{
-		first = b->top;
-		last = b->top;
-		b->top = b->top->next;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = first;
-		first->next = NULL;
+	if (b->size > 1 && rotate_stack(b))
 		rotated = 1;
-	}
 	if (rotated)
 		write(1, "rr\n", 3);
+}
+
+int	rotate_stack(t_stack *stack)
+{
+	t_node	*first;
+	t_node	*last;
+
+	if (stack->size <= 1)
+		return (0);
+	first = stack->top;
+	last = stack->top;
+	stack->top = stack->top->next;
+	while (last->next != NULL)
+		last = last->next;
+	last->next = first;
+	first->next = NULL;
+	return (1);
 }

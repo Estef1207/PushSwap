@@ -14,7 +14,7 @@
 
 void	pa(t_stack *a, t_stack *b)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (b->size <= 0 || b->top == NULL)
 		return ;
@@ -29,7 +29,7 @@ void	pa(t_stack *a, t_stack *b)
 
 void	pb(t_stack *a, t_stack *b)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (a->size <= 0 || a->top == NULL)
 		return ;
