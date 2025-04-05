@@ -17,7 +17,7 @@ void	ra(t_stack *a)
 	t_node	*first;
 	t_node	*last;
 
-	if (a->size <= 1 || a->top == NULL)
+	if (a == NULL || a->size <= 1 || a->top == NULL || a->top->next == NULL)
 		return ;
 	first = a->top;
 	a->top = a->top->next;
@@ -34,7 +34,7 @@ void	rb(t_stack *b)
 	t_node	*first;
 	t_node	*last;
 
-	if (b->size <= 1 || b->top == NULL)
+	if (b == NULL || b->size <= 1 || b->top == NULL || b->top->next == NULL)
 		return ;
 	first = b->top;
 	b->top = b->top->next;
@@ -53,19 +53,16 @@ void	rr(t_stack *a, t_stack *b)
 	t_node	*last;
 
 	rotated = 0;
-	if (a->size > 1)
+	if (a != NULL && a->size > 1 && a->top != NULL && a->top->next != NULL)
 	{
-		first = a->top;
-		last = a->top;
-		a->top = a->top->next;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = first;
-		first->next = NULL;
-		rotated = 1;
+		if (rotate_stack(a))
+			rotated = 1;
 	}
-	if (b->size > 1 && rotate_stack(b))
-		rotated = 1;
+	if (b != NULL && b->size > 1 && b->top != NULL && b->top->next != NULL)
+	{
+		if (rotate_stack(b))
+			rotated = 1;
+	}
 	if (rotated)
 		write(1, "rr\n", 3);
 }
@@ -75,11 +72,11 @@ int	rotate_stack(t_stack *stack)
 	t_node	*first;
 	t_node	*last;
 
-	if (stack->size <= 1)
+	if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
 		return (0);
 	first = stack->top;
-	last = stack->top;
 	stack->top = stack->top->next;
+	last = stack->top;
 	while (last->next != NULL)
 		last = last->next;
 	last->next = first;

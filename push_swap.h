@@ -31,10 +31,6 @@ typedef struct s_stack
 
 /* Inicialización de pilas */
 void	initialize_stack(t_stack *stack);
-void	push(t_stack *stack, int value);
-int		pop(t_stack *stack);
-int		peek(t_stack *stack);
-void	free_stack(t_stack *stack);
 
 /* Operaciones de Push_swap */
 void	sa(t_stack *a);
@@ -45,11 +41,19 @@ void	pb(t_stack *a, t_stack *b);
 void	ra(t_stack *a);
 void	rb(t_stack *b);
 void	rr(t_stack *a, t_stack *b);
+int		rotate_stack(t_stack *stack)
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
+int		reverse_stack(t_stack *stack);
+
 
 /* Utilidades */
-void	print_stack(t_stack *stack, char name);
+void	free_stack(t_stack *stack);
+void	print_stack(t_stack *stack);
+void	push(t_stack *stack, int value);
+
+/* Operaciones de orden */
+void	org_tt(t_stack *s)
 
 #endif

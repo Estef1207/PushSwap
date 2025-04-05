@@ -12,16 +12,22 @@
 
 #include "push_swap.h"
 
-void	org_three(t_stack *s)
+void	org_tt(t_stack *s)
 {
-
-	if (s->top > s->top->next && s->top > s->top->next)
-		ra(s);
-	if (s->top > s->top->next && s->top->next < s->top->next->next)
+	if (s->size < 2 || !s->top || !s->top->next)
+		return ;
+	if (s->top->value > s->top->next->value)
 		sa(s);
-	if (s->top < s->top->next && s->top > s->top->next->next)
+	if (s->size < 3 || !s->top || !s->top->next || !s->top->next->next)
+		return ;
+	if (s->top->value > s->top->next->value && \
+				s->top->value > s->top->next->next->value)
+		ra(s);
+	if (s->top->value > s->top->next->value)
+		sa(s);
+	if (s->top->value > s->top->next->next->value)
 		rra(s);
-	if (s->top < s->top->next && s->top < s->top->next->next)
+	if (s->top->next->value > s->top->next->next->value)
 	{
 		rra(s);
 		sa(s);
