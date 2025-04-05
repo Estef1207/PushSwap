@@ -11,13 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	initialize_stack(t_stack *stack)
-{
-	stack->top = NULL;
-	stack->size = 0;
-}
-*/
+
 void	initialize_stack(t_stack *stack)
 {
 	t_stack	*stack;

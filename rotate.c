@@ -49,8 +49,6 @@ void	rb(t_stack *b)
 void	rr(t_stack *a, t_stack *b)
 {
 	int		rotated;
-	t_node	*first;
-	t_node	*last;
 
 	rotated = 0;
 	if (a != NULL && a->size > 1 && a->top != NULL && a->top->next != NULL)

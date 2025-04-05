@@ -41,7 +41,7 @@ void	pb(t_stack *a, t_stack *b);
 void	ra(t_stack *a);
 void	rb(t_stack *b);
 void	rr(t_stack *a, t_stack *b);
-int		rotate_stack(t_stack *stack)
+int		rotate_stack(t_stack *stack);
 void	rra(t_stack *a);
 void	rrb(t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
@@ -52,8 +52,10 @@ int		reverse_stack(t_stack *stack);
 void	free_stack(t_stack *stack);
 void	print_stack(t_stack *stack);
 void	push(t_stack *stack, int value);
+int		is_sorted(t_stack *stack);
 
 /* Operaciones de orden */
-void	org_tt(t_stack *s)
+void	org_tt(t_stack *s);
+
 
 #endif

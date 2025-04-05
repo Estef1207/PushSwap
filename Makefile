@@ -11,37 +11,24 @@
 # **************************************************************************** #
 
 NAME = pushswap
-
-SRC = push_swap.c swap.c push.c rotate.c reverse.c stack_init.c main.c
-
+SRC = num_basic.c push.c rotate.c reverse.c swap.c stack_init.c utils.c main.c
 OBJS = $(SRC:.c=.o)
-
-LIBFT_PATH = ../libft
-
-LIBFT = $(LIBFT_PATH)/libft.a
-
 CC = cc
+CFLAGS = -Wall -Werror -Wextra 
 
-CFLAGS = -Wall -Werror -Wextra -I$(LIBFT_PATH)
-
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c Makefile pushswap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIBFT):
-	make -C $(LIBFT_PATH)
-
 clean:
 	rm -f $(OBJS)
-	make -C $(LIBFT_PATH) clean
-
+	
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
