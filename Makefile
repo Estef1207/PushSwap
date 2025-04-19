@@ -11,10 +11,16 @@
 # **************************************************************************** #
 
 NAME = pushswap
-SRC = num_basic.c push.c rotate.c reverse.c swap.c stack_init.c utils.c main.c
+
+SRC = num_basic.c parseo.c push.c rotate.c reverse.c swap.c stack_init.c \
+			utils.c main.c aux_lib.c
+
 OBJS = $(SRC:.c=.o)
+
 CC = cc
+
 CFLAGS = -Wall -Werror -Wextra 
+
 
 all: $(NAME)
 

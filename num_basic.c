@@ -33,7 +33,7 @@ void	org_three(t_stack *s)
 	else if (s->top->value > s->top->next->value && \
 					s->top->next->next->value > s->top->value)
 		sa(s);
-	else if (s->top->next->value > s->top->value &&  \
+	else if (s->top->next->value > s->top->value && \
 					s->top->value > s->top->next->next->value)
 		rra(s);
 	else if (s->top->value > s->top->next->next->value && \

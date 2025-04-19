@@ -1,4 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esmeza-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/19 11:50:52 by esmeza-s          #+#    #+#             */
+/*   Updated: 2025/04/19 11:50:55 by esmeza-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <push_swap.h>
 
 int	find_median(t_stack s, int size)
 {
@@ -6,20 +18,19 @@ int	find_median(t_stack s, int size)
 	int	saldo;
 
 	if (size < 2 || !s)
-		return ;
+		return (0);
 	if (size)
 	{
 		mediana = size / 2;
 		saldo = size % 2;
 	}
 	if (saldo == 0)
-	return (mediana);
+		return (mediana);
 	else
-	return (mediana + 1);
+		return (mediana + 1);
 }
-
-
-int	get_median(t_stack stack, int mediana)
+/*
+int	get_median(t_stack stack, int median)
 {
 	t_stack	temp;
 	int		small_num;
@@ -31,11 +42,17 @@ int	get_median(t_stack stack, int mediana)
 	count = 0;
 	while (count < median)
 	{
-		if (temp < temp->next)
+		while (temp)
+			if (temp < temp++)
+				small_num_tmp = tmp;
+
+
+
+{
 			small_num = temp;
 			temp = 2147483646;
 			temp++;
-
+		}
 
 
 
@@ -43,17 +60,3 @@ int	get_median(t_stack stack, int mediana)
 		count++;
 	}
 }*/
-
-
-int	is_sorted(t_stack stack)
-{
-	while (stack && stack->next)
-	{
-		if (stack->value < stack->next->value)
-			return (0);
-		stack = stack->next;
-	}
-		return (1);
-}
-
- 

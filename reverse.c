@@ -71,7 +71,7 @@ int	reverse_stack(t_stack *stack)
 	t_node	*last;
 
 	if (stack == NULL || stack->top == NULL || stack->top->next == NULL)
-		return ;
+		return (0);
 	last = stack->top;
 	while (last->next->next != NULL)
 		last = last->next;

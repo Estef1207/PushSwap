@@ -69,3 +69,13 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
+void	error_exit(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_a)
+		free_stack(stack_a);
+	if (stack_b)
+		free_stack(stack_b);
+	write(2, "Error\n", 6);
+	exit(1);
+}
