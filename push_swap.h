@@ -66,7 +66,7 @@ void	org_two(t_stack *s);
 void	org_three(t_stack *s);
 
 /* Funciones auxiliares antes de incluir la libreria completa */
-int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 int		ft_isdigit(int c);
 
 #endif

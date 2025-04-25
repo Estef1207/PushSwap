@@ -36,7 +36,7 @@ int	check_limits(char *str)
 {
 	long	num;
 
-	num = ft_atoi(str);
+	num = ft_atol(str);
 	if (num < INT_MIN || num > INT_MAX)
 		return (0);
 	return (1);
@@ -67,14 +67,14 @@ int	parse_arg(t_stack *stack, int argc, char **argv)
 	int	i;
 	int	num;
 
-	i = 1;
-	while (i < argc)
+	i = argc - 1;
+	while (i > 0)
 	{
 		if (!valid_number(argv[i]) || !check_limits(argv[i]))
 			return (0);
-		num = ft_atoi(argv[i]);
+		num = ft_atol(argv[i]);
 		push(stack, (int)num);
-		i++;
+		i--;
 	}
 	if (check_duplicates(stack))
 		return (0);

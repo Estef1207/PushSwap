@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	resultado;
-	int	signo;
-	int	i;
+	long	resultado;
+	int		signo;
+	int		i;
 
 	i = 0;
 	resultado = 0;

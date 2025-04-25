@@ -54,6 +54,21 @@ void	push(t_stack *stack, int value)
 	stack->size++;
 }
 
+int	pop(t_stack *stack)
+{
+	t_node	*temp;
+	int		value;
+
+	if (!stack || !stack->top)
+		return (0);
+	temp = stack->top;
+	value = temp->value;
+	stack->top = temp->next;
+	free(temp);
+	stack->size--;
+	return (value);
+}
+
 int	is_sorted(t_stack *stack)
 {
 	t_node	*s;
