@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
+/*
 int	find_median(t_stack s, int size)
 {
 	int	mediana;
@@ -29,7 +29,7 @@ int	find_median(t_stack s, int size)
 	else
 		return (mediana + 1);
 }
-/*
+
 int	get_median(t_stack stack, int median)
 {
 	t_stack	temp;

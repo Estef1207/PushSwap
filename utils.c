@@ -12,35 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_stack(t_stack *stack)
-{
-	t_node	*current;
-	t_node	*next;
-
-	current = stack->top;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	free(stack);
-}
-
-void	print_stack(t_stack *stack)
-{
-	t_node	*current;
-
-	printf("Stack (size: %d): ", stack->size);
-	current = stack->top;
-	while (current)
-	{
-		printf("%d ", current->value);
-		current = current->next;
-	}
-	printf("\n");
-}
-
 void	push(t_stack *stack, int value)
 {
 	t_node	*new_node;
@@ -69,20 +40,18 @@ int	pop(t_stack *stack)
 	return (value);
 }
 
-int	is_sorted(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
-	t_node	*s;
+	t_node	*current;
 
-	if (!stack || !stack->top)
-		return (1);
-	s = stack->top;
-	while (s && s->next)
+	printf("Stack (size: %d): ", stack->size);
+	current = stack->top;
+	while (current)
 	{
-		if (s->value > s->next->value)
-			return (0);
-		s = s->next;
+		printf("%d ", current->value);
+		current = current->next;
 	}
-	return (1);
+	printf("\n");
 }
 
 void	error_exit(t_stack *stack_a, t_stack *stack_b)

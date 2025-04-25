@@ -23,3 +23,18 @@ t_stack	*initialize_stack(void)
 	stack->size = 0;
 	return (stack);
 }
+
+void	free_stack(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*next;
+
+	current = stack->top;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	free(stack);
+}

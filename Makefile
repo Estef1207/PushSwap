@@ -12,14 +12,26 @@
 
 NAME = pushswap
 
-SRC = num_basic.c parseo.c push.c rotate.c reverse.c swap.c stack_init.c \
-			utils.c main.c aux_lib.c
+INC_DIR = includes
+
+SRC = \
+	algoritm/num_basic.c \
+	algoritm/utils/utils_sort.c \
+	aux/aux_lib.c \
+	parseo.c \
+ 	review/check.c \
+	src/action/push.c \
+	src/action/reverse.c \
+	src/action/rotate.c \
+	src/action/swap.c \
+	src/stack_init.c \
+	utils.c main.c 
 
 OBJS = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR)
 
 
 all: $(NAME)
@@ -27,7 +39,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c Makefile pushswap.h
+%.o: %.c Makefile $(INC_DIR)/pushswap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
