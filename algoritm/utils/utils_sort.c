@@ -11,52 +11,76 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
-/*
-int	find_median(t_stack s, int size)
-{
-	int	mediana;
-	int	saldo;
 
-	if (size < 2 || !s)
+int	find_median(t_stack *stack)
+{
+	if (!s || stack->size < 2)
 		return (0);
-	if (size)
-	{
-		mediana = size / 2;
-		saldo = size % 2;
-	}
-	if (saldo == 0)
-		return (mediana);
+	if 	(stack->size % 2 == 0)
+		return (stack->size / 2);
 	else
-		return (mediana + 1);
+		return (stack->size / 2 + 1);
 }
 
-int	get_median(t_stack stack, int median)
+void	assign_indices(t_stack *stack)
 {
-	t_stack	temp;
-	int		small_num;
-	int		count;
+    int		*array;
+    t_node	*current;
+    int		i;
 
-	if (!stack || stack->top == NULL)
-		return ;
-	temp = stack;
-	count = 0;
-	while (count < median)
-	{
-		while (temp)
-			if (temp < temp++)
-				small_num_tmp = tmp;
+    // 1. Crear array con todos los valores
+    array = malloc(sizeof(int) * stack->size);
+    if (!array)
+        return;
+    current = stack->top;
+    i = 0;
+    while (current)
+    {
+        array[i++] = current->value;
+        current = current->next;
+    }
 
+    // 2. Ordenar el array
+    sort_array(array, stack->size);
 
+    // 3. Asignar índices basados en posición en el array
+    current = stack->top;
+    while (current)
+    {
+        i = 0;
+        while (i < stack->size)
+        {
+            if (current->value == array[i])
+            {
+                current->indice = i;
+                break;
+            }
+            i++;
+        }
+        current = current->next;
+    }
+    free(array);
+}
 
+void	sort_array(int *array, int size)
 {
-			small_num = temp;
-			temp = 2147483646;
-			temp++;
-		}
+    int	i, j, temp;
 
+    i = 0;
+    while (i < size - 1)
+    {
+        j = 0;
+        while (j < size - i - 1)
+        {
+            if (array[j] > array[j + 1])
+            {
+                temp = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = temp;
+            }
+            j++;
+        }
+        i++;
+    }
+}
 
-
-		temp++;
-		count++;
-	}
-}*/
