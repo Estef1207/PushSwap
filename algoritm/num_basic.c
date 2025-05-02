@@ -46,3 +46,84 @@ void	org_three(t_stack *s)
 		rra(s);
 	}
 }
+
+void	org_four(t_stack *a, t_stack *b)
+{
+	if (a->size < 4 || !a->top || !a->top->next || !a->top->next->next)
+		return ;
+	if (a->size == 4)
+	{
+		if (a->top->value == find_min_value(a))
+			pb(a, b);
+		else if (a->top->next->value == find_min_value(a))
+		{
+			ra(a);
+			pb(a, b);
+		}
+		else if (a->top->next->next->value == find_min_value(a))
+		{
+			ra(a);
+			ra(a);
+			pb(a, b);
+		}
+		else if (a->top->next->next->next->value == find_min_value(a))
+		{
+			rra(a);
+			pb(a, b);
+		}
+		org_three(a);
+		pa(b, a);
+	}
+}
+
+void	org_five(t_stack *a, t_stack *b)
+{
+	if (a->size == 5)
+	{
+		if (a->top->value == find_min_value(a))
+			pb(a, b);
+		else if (a->top->next->value == find_min_value(a))
+		{
+			ra(a);
+			pb(a, b);
+		}
+		else if (a->top->next->next->value == find_min_value(a))
+		{
+			ra(a);
+			ra(a);
+			pb(a, b);
+		}
+		else if (a->top->next->next->next->value == find_min_value(a))
+		{
+			rra(a);
+			pb(a, b);
+		}
+		else if (a->top->next->next->next->next->value == find_min_value(a))
+		{
+			rra(a);
+			rra(a);
+			pb(a, b);
+		}
+		org_four(a, b);
+		pa(b, a);
+	}
+}
+
+int	find_min_value(t_stack *stack)
+{
+	t_node	*current;
+	int		min;
+
+	if (!stack || !stack->top)
+		return (0);
+	current = stack->top;
+	min = current->value;
+	while (current)
+	{
+		if (current->value < min)
+			min = current->value;
+		current = current->next;
+	}
+	return (min);
+}
+
