@@ -53,6 +53,19 @@ void	print_stack(t_stack *stack)
 	}
 	printf("\n");
 }
+/*
+void	print_stack(t_stack *s, char name)
+{
+	t_node *current = s->top;
+
+	printf("Stack %c: ", name);
+	while (current)
+	{
+		printf("%d ", current->value);
+		current = current->next;
+	}
+	printf("\n");
+}*/
 
 void	error_exit(t_stack *stack_a, t_stack *stack_b)
 {

@@ -65,9 +65,16 @@ int		parse_arg(t_stack *stack, int argc, char **argv);
 /* Operaciones de orden */
 void	org_two(t_stack *s);
 void	org_three(t_stack *s);
+void	org_four(t_stack *a, t_stack *b);
+void	org_five(t_stack *a, t_stack *b);
 
 /* Funciones auxiliares antes de incluir la libreria completa */
 long	ft_atol(const char *str);
 int		ft_isdigit(int c);
+int		find_median(t_stack *stack);
+void	assign_indexes(t_stack *stack);
+void	sort_array(int *array, int size);
+int		find_min_value(t_stack *stack);
+
 
 #endif

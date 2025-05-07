@@ -26,20 +26,20 @@ void	assign_indexes(t_stack *stack)
 {
 	t_node	*current;
 	t_node	*compare;
-	int		index;
+	int		indice;
 
 	current = stack->top;
 	while (current)
 	{
-		index = 0;
+		indice = 0;
 		compare = stack->top;
 		while (compare)
 		{
 			if (compare->value < current->value)
-				index++;
+				indice++;
 			compare = compare->next;
 		}
-		current->index = index;
+		current->indice = indice;
 		current = current->next;
 	}
 }

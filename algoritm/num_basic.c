@@ -75,7 +75,7 @@ void	org_four(t_stack *a, t_stack *b)
 		pa(b, a);
 	}
 }
-
+// en construccion
 void	org_five(t_stack *a, t_stack *b)
 {
 	if (a->size == 5)

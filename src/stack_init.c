@@ -26,15 +26,13 @@ t_stack	*initialize_stack(void)
 
 void	free_stack(t_stack *stack)
 {
-	t_node	*current;
-	t_node	*next;
+	t_node *tmp;
 
-	current = stack->top;
-	while (current)
+	while (stack->top)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		tmp = stack->top->next;
+		free(stack->top);
+		stack->top = tmp;
 	}
-	free(stack);
+	stack->size = 0;
 }

@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pushswap
+NAME = push_swap
 
 INC_DIR = includes
 
@@ -39,7 +39,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c Makefile $(INC_DIR)/pushswap.h
+%.o: %.c Makefile $(INC_DIR)/push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
