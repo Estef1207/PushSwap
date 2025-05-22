@@ -27,6 +27,7 @@ void	rra(t_stack *a)
 	first->next = a->top;
 	a->top = first;
 	write(1, "rra\n", 4);
+	print_stack(a, "stack a");	
 }
 
 void	rrb(t_stack *b)
@@ -44,6 +45,7 @@ void	rrb(t_stack *b)
 	first->next = b->top;
 	b->top = first;
 	write(1, "rrb\n", 4);
+	print_stack(b, "stack b");
 }
 
 void	rrr(t_stack *a, t_stack *b)
@@ -63,6 +65,8 @@ void	rrr(t_stack *a, t_stack *b)
 	}
 	if (rotated)
 		write(1, "rrr\n", 4);
+	print_stack(a, "stack a");	
+	print_stack(b, "stack b");
 }
 
 int	reverse_stack(t_stack *stack)

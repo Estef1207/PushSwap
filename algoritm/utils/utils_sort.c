@@ -43,7 +43,7 @@ void	assign_indexes(t_stack *stack)
 		current = current->next;
 	}
 }
-
+/*
 void	sort_array(int *array, int size)
 {
 	int	i;
@@ -67,4 +67,4 @@ void	sort_array(int *array, int size)
 		i++;
 	}
 }
-
+*/

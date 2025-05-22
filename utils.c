@@ -39,7 +39,7 @@ int	pop(t_stack *stack)
 	stack->size--;
 	return (value);
 }
-
+/*
 void	print_stack(t_stack *stack)
 {
 	t_node	*current;
@@ -52,20 +52,18 @@ void	print_stack(t_stack *stack)
 		current = current->next;
 	}
 	printf("\n");
-}
-/*
-void	print_stack(t_stack *s, char name)
-{
-	t_node *current = s->top;
-
-	printf("Stack %c: ", name);
-	while (current)
-	{
-		printf("%d ", current->value);
-		current = current->next;
-	}
-	printf("\n");
 }*/
+void print_stack(t_stack *stack, const char *name)
+{
+    printf("%s (size=%d): ", name, stack->size);
+    t_node *tmp = stack->top;
+    while (tmp)
+    {
+        printf("%d ", tmp->value);
+        tmp = tmp->next;
+    }
+    printf("\n");
+}
 
 void	error_exit(t_stack *stack_a, t_stack *stack_b)
 {
@@ -75,4 +73,21 @@ void	error_exit(t_stack *stack_a, t_stack *stack_b)
 		free_stack(stack_b);
 	write(2, "Error\n", 6);
 	exit(1);
+}
+
+
+int	is_sorted(t_stack *stack)
+{
+	t_node	*s;
+
+	if (!stack || !stack->top)
+		return (1);
+	s = stack->top;
+	while (s && s->next)
+	{
+		if (s->value > s->next->value)
+			return (0);
+		s = s->next;
+	}
+	return (1);
 }

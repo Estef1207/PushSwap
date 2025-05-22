@@ -1,21 +1,5 @@
 #include "push_swap.h"
 
-int	is_sorted(t_stack *stack)
-{
-	t_node	*s;
-
-	if (!stack || !stack->top)
-		return (1);
-	s = stack->top;
-	while (s && s->next)
-	{
-		if (s->value > s->next->value)
-			return (0);
-		s = s->next;
-	}
-	return (1);
-}
-
 int	valid_number(char *str)
 {
 	int	i;

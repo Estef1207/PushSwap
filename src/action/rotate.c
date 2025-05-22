@@ -27,6 +27,7 @@ void	ra(t_stack *a)
 	last->next = first;
 	first->next = NULL;
 	write(1, "ra\n", 3);
+	print_stack(a, "stack a");	
 }
 
 void	rb(t_stack *b)
@@ -44,6 +45,7 @@ void	rb(t_stack *b)
 	last->next = first;
 	first->next = NULL;
 	write(1, "rb\n", 3);
+	print_stack(b, "stack b");
 }
 
 void	rr(t_stack *a, t_stack *b)
@@ -63,6 +65,8 @@ void	rr(t_stack *a, t_stack *b)
 	}
 	if (rotated)
 		write(1, "rr\n", 3);
+	print_stack(a, "stack a");	
+	print_stack(b, "stack b");
 }
 
 int	rotate_stack(t_stack *stack)

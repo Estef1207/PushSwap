@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	org_two(t_stack *s)
+void	sort_two(t_stack *s)
 {
 	if (s->size < 2 || !s->top || !s->top->next)
 		return ;
@@ -20,7 +20,7 @@ void	org_two(t_stack *s)
 		sa(s);
 }
 
-void	org_three(t_stack *s)
+void	sort_three(t_stack *s)
 {
 	if (s->size < 3 || !s->top || !s->top->next || !s->top->next->next)
 		return ;
@@ -46,69 +46,76 @@ void	org_three(t_stack *s)
 		rra(s);
 	}
 }
-
-void	org_four(t_stack *a, t_stack *b)
+void	sort_five(t_stack *a, t_stack *b)
 {
-	if (a->size < 4 || !a->top || !a->top->next || !a->top->next->next)
-		return ;
-	if (a->size == 4)
-	{
-		if (a->top->value == find_min_value(a))
-			pb(a, b);
-		else if (a->top->next->value == find_min_value(a))
-		{
-			ra(a);
-			pb(a, b);
-		}
-		else if (a->top->next->next->value == find_min_value(a))
-		{
-			ra(a);
-			ra(a);
-			pb(a, b);
-		}
-		else if (a->top->next->next->next->value == find_min_value(a))
-		{
-			rra(a);
-			pb(a, b);
-		}
-		org_three(a);
-		pa(b, a);
-	}
+	move_min_to_top(a);
+	pb(a, b);
+	sort_three(a);
+	pa(b, a);
 }
-// en construccion
-void	org_five(t_stack *a, t_stack *b)
+/*
+void	sort_five(t_stack *a, t_stack *b)
 {
-	if (a->size == 5)
+	int	mov;
+
+	mov = 0;
+	if(a->size == 4)
+		mov = 1;
+	else if (a->size == 5)
+		mov = 2;
+	while (mov--)
 	{
-		if (a->top->value == find_min_value(a))
-			pb(a, b);
-		else if (a->top->next->value == find_min_value(a))
-		{
-			ra(a);
-			pb(a, b);
-		}
-		else if (a->top->next->next->value == find_min_value(a))
-		{
-			ra(a);
-			ra(a);
-			pb(a, b);
-		}
-		else if (a->top->next->next->next->value == find_min_value(a))
-		{
-			rra(a);
-			pb(a, b);
-		}
-		else if (a->top->next->next->next->next->value == find_min_value(a))
-		{
-			rra(a);
-			rra(a);
-			pb(a, b);
-		}
-		org_four(a, b);
-		pa(b, a);
+		move_min_to_top(a);
+		pb(a, b);
 	}
+	sort_three(a);
+	while (b->size > 0)
+		pa(b, a);
+}*/
+
+int	get_min_position(t_stack *stack)
+{
+	t_node	*current;
+	int		min;
+	int		pos;
+	int		index;
+	
+	current = stack->top;
+	min = current->value;
+	pos = 0;
+	index = 0;
+	while (current)
+	{
+		if (current->value < min)
+		{
+			min = current->value;
+			pos = index;
+		}
+		current = current->next;
+		index++;
+	}
+	return (pos);
 }
 
+void	move_min_to_top(t_stack *stack)
+{
+	int	pos;
+
+	pos = get_min_position(stack);
+	if (pos <= stack->size / 2)
+	{
+		while (pos-- > 0)
+			ra(stack);
+	}
+	else
+	{
+		pos = stack->size - pos;
+		while (pos-- > 0)
+			rra(stack);
+	}
+}
+
+/*
 int	find_min_value(t_stack *stack)
 {
 	t_node	*current;
@@ -125,5 +132,5 @@ int	find_min_value(t_stack *stack)
 		current = current->next;
 	}
 	return (min);
-}
+}*/
 

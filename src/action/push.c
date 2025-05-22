@@ -22,9 +22,12 @@ void	pa(t_stack *a, t_stack *b)
 	b->top = b->top->next;
 	temp->next = a->top;
 	a->top = temp;
+	//temp->next = a->top;
 	b->size--;
 	a->size++;
 	write(1, "pa\n", 3);
+	print_stack(a, "stack a");	
+	print_stack(b, "stack b");
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -37,7 +40,10 @@ void	pb(t_stack *a, t_stack *b)
 	a->top = a->top->next;
 	temp->next = b->top;
 	b->top = temp;
+//	temp->next = b->top;
 	a->size--;
 	b->size++;
 	write(1, "pb\n", 3);
+	print_stack(a, "stack a");	
+	print_stack(b, "stack b");
 }
