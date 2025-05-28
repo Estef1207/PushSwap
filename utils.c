@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 void	push(t_stack *stack, int value)
 {

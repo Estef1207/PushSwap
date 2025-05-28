@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 void	sa(t_stack *a)
 {

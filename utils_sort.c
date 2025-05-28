@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 int	find_median(t_stack *stack)
 {

@@ -10,43 +10,75 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME	= push_swap
+CC		= cc
+CFLAGS	= -Wall -Werror -Wextra
+RM		= rm -f
 
-INC_DIR = includes
+
+# Directorios
+
+SRC_DIR     = src
+OBJ_DIR     = obj
+INCLUDE_DIR = includes
+
+
+# Librerías externas
+
+LIBFT_DIR   = myLibft
+PRINTF_DIR  = printf
+
+LIBFT_A     = $(LIBFT_DIR)/libft.a
+PRINTF_A    = $(PRINTF_DIR)/libftprintf.a
+
+
+# Archivos fuente
 
 SRC = \
-	algoritm/num_basic.c \
-	algoritm/utils/utils_sort.c \
-	aux/aux_lib.c \
+	num_basic.c \
+	utils_sort.c \
+	aux_lib.c \
 	parseo.c \
- 	review/check.c \
-	src/action/push.c \
-	src/action/reverse.c \
-	src/action/rotate.c \
-	src/action/swap.c \
-	src/stack_init.c \
-	utils.c main.c 
+ 	check.c \
+	push.c \
+	reverse.c \
+	rotate.c \
+	swap.c \
+	stack_init.c \
+	main.c 
 
-OBJS = $(SRC:.c=.o)
 
-CC = cc
+# Objetos
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
-CFLAGS = -Wall -Werror -Wextra -I$(INC_DIR)
 
+# Reglas
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+$(NAME): $(LIBFT_A) $(PRINTF_A) $(OBJS)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(PRINTF_DIR) \
+	$(OBJS) $(LIBFT_A) $(PRINTF_A) -o $(NAME)
 
-%.o: %.c Makefile $(INC_DIR)/push_swap.h
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -I$(LIBFT_DIR) -I$(PRINTF_DIR) -c $< -o $@
+
+$(LIBFT_A):
+	@$(MAKE) -C $(LIBFT_DIR)
+
+$(PRINTF_A):
+	@$(MAKE) -C $(PRINTF_DIR)
 
 clean:
-	rm -f $(OBJS)
-	
+	$(RM) -r $(OBJ_DIR)
+	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) clean -C $(PRINTF_DIR)
+
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@$(MAKE) fclean -C $(PRINTF_DIR)
 
 re: fclean all
 

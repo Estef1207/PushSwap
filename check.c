@@ -1,4 +1,6 @@
 #include "push_swap.h"
+#include "libft.h"
+#include "ft_printf.h"
 
 int	valid_number(char *str)
 {
